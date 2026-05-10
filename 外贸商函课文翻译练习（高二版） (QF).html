@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外贸商函 · 课文翻译练习（高难版）</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+  :root {
+    --navy: #1a2d4e; --blue: #2c5282; --accent: #c8972a; --accent-light: #f6e8c3;
+    --green: #276749; --green-light: #c6f6d5; --red: #9b2c2c; --red-light: #fed7d7;
+    --bg: #f7f4ef; --card: #ffffff; --border: #d6d0c8; --text: #1a1a2e; --muted: #6b7280;
+    --hint-bg: #fffbeb; --hint-color: #92400e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Serif SC', serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  .topbar { background: var(--navy); color: white; padding: 14px 32px; display: flex;
+    align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    border-bottom: 3px solid var(--accent); }
+  .topbar .logo { font-size: 1.1rem; font-weight: 700; letter-spacing: .04em; }
+  .topbar .breadcrumb { font-size: .82rem; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: 6px; }
+  .breadcrumb .sep { color: var(--accent); }
+  .breadcrumb .crumb { cursor: pointer; transition: color .2s; }
+  .breadcrumb .crumb:hover { color: white; }
+  .breadcrumb .active { color: white; font-weight: 700; }
+  .topbar .home-btn { background: transparent; border: 1px solid rgba(255,255,255,.35); color: white;
+    padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: .82rem; font-family: inherit; transition: all .2s; }
+  .topbar .home-btn:hover { background: rgba(255,255,255,.15); border-color: white; }
+
+  .main { max-width: 980px; margin: 0 auto; padding: 36px 24px 80px; }
+
+  /* HOME */
+  .home-header { text-align: center; margin-bottom: 48px; }
+  .home-header h1 { font-size: 2rem; color: var(--navy); margin-bottom: 10px; }
+  .home-header p { color: var(--muted); font-size: .95rem; }
+  .home-header .badge { display: inline-block; background: var(--accent); color: white;
+    font-size: .78rem; font-weight: 700; padding: 3px 10px; border-radius: 12px; margin-top: 8px; }
+  .name-section { max-width: 380px; margin: 0 auto 44px; display: flex; gap: 10px; align-items: center; }
+  .name-section label { font-weight: 700; white-space: nowrap; color: var(--navy); }
+  .name-section input { flex: 1; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px;
+    font-size: 1rem; font-family: inherit; background: white; transition: border-color .2s; }
+  .name-section input:focus { outline: none; border-color: var(--blue); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+  .project-card { background: white; border: 1.5px solid var(--border); border-radius: 12px;
+    padding: 22px 20px 18px; cursor: pointer; transition: all .22s; position: relative; overflow: hidden; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent); transform: scaleX(0); transition: transform .22s; transform-origin: left; }
+  .project-card:hover { border-color: var(--blue); box-shadow: 0 4px 18px rgba(44,82,130,.12); transform: translateY(-2px); }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-num { font-size: .78rem; font-weight: 700; color: var(--accent); letter-spacing: .08em; margin-bottom: 6px; }
+  .project-name { font-size: 1.02rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; line-height: 1.4; }
+  .project-sub { font-size: .84rem; color: var(--muted); }
+  .project-count { position: absolute; top: 18px; right: 16px; background: var(--accent-light);
+    color: var(--accent); font-size: .75rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+
+  /* MODELS */
+  .screen-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 32px;
+    padding-bottom: 24px; border-bottom: 1.5px solid var(--border); }
+  .back-btn { background: white; border: 1.5px solid var(--border); color: var(--navy); padding: 8px 16px;
+    border-radius: 8px; cursor: pointer; font-size: .88rem; font-family: inherit; font-weight: 700;
+    transition: all .2s; white-space: nowrap; }
+  .back-btn:hover { background: var(--navy); color: white; border-color: var(--navy); }
+  .screen-header-text h2 { font-size: 1.6rem; color: var(--navy); margin-bottom: 4px; }
+  .screen-header-text p { color: var(--muted); font-size: .9rem; }
+  .models-list { display: flex; flex-direction: column; gap: 12px; }
+  .model-card { background: white; border: 1.5px solid var(--border); border-radius: 10px;
+    padding: 18px 22px; cursor: pointer; transition: all .2s; display: flex; align-items: center;
+    justify-content: space-between; gap: 16px; }
+  .model-card:hover { border-color: var(--blue); background: #f0f6ff; box-shadow: 0 2px 10px rgba(44,82,130,.08); }
+  .model-id { font-weight: 700; color: var(--accent); font-size: 1.05rem; min-width: 52px; }
+  .model-title-text { flex: 1; }
+  .model-title-zh { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .model-title-en { font-size: .82rem; color: var(--muted); font-style: italic; font-family: 'Lora', serif; }
+  .model-score-badge { background: var(--green-light); color: var(--green); font-size: .8rem;
+    font-weight: 700; padding: 3px 10px; border-radius: 12px; white-space: nowrap; }
+  .model-arrow { color: var(--border); font-size: 1.2rem; }
+
+  /* EXERCISE */
+  .exercise-header { background: var(--navy); color: white; padding: 20px 28px; border-radius: 12px;
+    margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+  .exercise-header .ex-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+  .exercise-header .ex-meta { font-size: .8rem; color: rgba(255,255,255,.6); }
+  .progress-pill { background: var(--accent); color: white; padding: 4px 14px;
+    border-radius: 20px; font-size: .8rem; font-weight: 700; white-space: nowrap; }
+
+  /* hint legend */
+  .hint-legend { display: flex; gap: 18px; align-items: center; margin-bottom: 18px;
+    padding: 10px 16px; background: var(--hint-bg); border: 1px solid #fde68a;
+    border-radius: 8px; font-size: .82rem; color: var(--hint-color); }
+  .hint-legend .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+  .legend-hint .dot { background: var(--hint-color); }
+  .legend-blank .dot { background: #9ca3af; }
+
+  .sentence-block { background: white; border: 1.5px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px; }
+  .zh-hint { font-size: .9rem; color: var(--blue); background: #ebf4ff; border-left: 3px solid var(--blue);
+    padding: 10px 14px; border-radius: 0 6px 6px 0; margin-bottom: 14px; line-height: 1.7; }
+
+  /* EN text with inline words and blanks */
+  .en-text { font-family: 'Lora', serif; font-size: 1.08rem; line-height: 2.6; color: var(--text); }
+
+  /* HINT word shown in amber */
+  .hint-word { color: var(--hint-color); font-weight: 700; background: var(--hint-bg);
+    padding: 1px 5px; border-radius: 4px; border: 1px solid #fde68a; margin: 0 1px; }
+
+  /* BLANK input */
+  .blank { display: inline-block; border: none; border-bottom: 2.5px solid #9ca3af; background: transparent;
+    font-family: 'Lora', serif; font-size: 1rem; text-align: center; color: var(--navy); padding: 0 2px 1px;
+    margin: 0 1px; vertical-align: baseline; transition: border-color .2s; }
+  .blank:focus { outline: none; border-bottom-color: var(--blue); background: rgba(44,82,130,.04); }
+  .blank::placeholder { color: #c4c9d4; font-style: italic; font-size: .8em; }
+  .blank.correct { border-bottom-color: var(--green); color: var(--green); font-weight: 700; }
+  .blank.wrong { border-bottom-color: var(--red); color: var(--red); background: rgba(155,44,44,.06); animation: shake .3s ease; }
+  .blank.failed { border-bottom-color: var(--red); color: var(--red); font-weight: 700; background: rgba(155,44,44,.08); }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+
+  /* punct after blank */
+  .punct { font-family: 'Lora', serif; font-size: 1rem; color: var(--text); }
+
+  /* ACTION */
+  .action-area { margin-top: 28px; padding-top: 22px; border-top: 1.5px dashed var(--border); text-align: center; }
+  .submit-btn { display: none; background: var(--navy); color: white; border: none; padding: 14px 40px;
+    font-size: 1rem; font-family: inherit; font-weight: 700; border-radius: 8px; cursor: pointer;
+    transition: background .2s; letter-spacing: .04em; }
+  .submit-btn:hover { background: var(--blue); }
+  .submit-btn.visible { display: inline-block; }
+
+  /* SCORE */
+  .score-box { background: linear-gradient(135deg, var(--navy), var(--blue)); color: white;
+    border-radius: 12px; padding: 32px; text-align: center; margin-bottom: 24px; }
+  .score-label { font-size: .9rem; color: rgba(255,255,255,.7); margin-bottom: 8px; }
+  .score-num { font-size: 4rem; font-weight: 700; font-family: 'Lora', serif; color: var(--accent);
+    line-height: 1; margin-bottom: 8px; }
+  .score-detail { font-size: .9rem; color: rgba(255,255,255,.65); }
+  .btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
+  .btn { padding: 11px 24px; font-size: .93rem; font-family: inherit; font-weight: 700;
+    border-radius: 8px; cursor: pointer; border: none; transition: all .2s; letter-spacing: .03em; }
+  .btn-primary { background: var(--navy); color: white; }
+  .btn-primary:hover { background: var(--blue); }
+  .btn-success { background: var(--green); color: white; }
+  .btn-success:hover { background: #1e543a; }
+  .btn-outline { background: white; color: var(--navy); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--navy); }
+  .btn-accent { background: var(--accent); color: white; }
+  .btn-accent:hover { background: #a67c1e; }
+
+  .hidden { display: none !important; }
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  @media (max-width: 600px) {
+    .main { padding: 20px 16px 60px; }
+    .home-header h1 { font-size: 1.5rem; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .topbar { padding: 12px 16px; }
+    .en-text { font-size: .95rem; line-height: 2.8; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">外贸商函 · 翻译练习（高难版）</div>
+  <div class="breadcrumb" id="breadcrumb"></div>
+  <button class="home-btn" onclick="goHome()">⌂ 主界面</button>
+</div>
+
+<div class="main">
+  <div class="screen active" id="screen-home">
+    <div class="home-header">
+      <h1>外贸商函翻译练习</h1>
+      <p>每句仅给出 2–6 个提示词（金色显示），其余单词全部需要独立填写</p>
+      <span class="badge">高难版 · 全句翻译</span>
+    </div>
+    <div class="name-section">
+      <label>学生姓名：</label>
+      <input type="text" id="studentName" placeholder="请输入姓名">
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+
+  <div class="screen" id="screen-models">
+    <div class="screen-header">
+      <button class="back-btn" onclick="goHome()">← 返回</button>
+      <div class="screen-header-text">
+        <h2 id="modelScreenTitle"></h2>
+        <p id="modelScreenSub"></p>
+      </div>
+    </div>
+    <div class="models-list" id="modelsList"></div>
+  </div>
+
+  <div class="screen" id="screen-exercise">
+    <div class="exercise-header">
+      <div>
+        <div class="ex-title" id="exTitle"></div>
+        <div class="ex-meta" id="exMeta"></div>
+      </div>
+      <div class="progress-pill" id="exProgress"></div>
+    </div>
+    <div class="hint-legend">
+      <span class="legend-hint"><span class="dot"></span>金色 = 提示词（已给出）</span>
+      <span class="legend-blank"><span class="dot"></span>下划线 = 需要填写</span>
+      <span style="color:var(--muted)">每词独立一格 · 不区分大小写</span>
+    </div>
+    <div id="exerciseContent"></div>
+    <div class="action-area">
+      <button class="submit-btn" id="submitBtn" onclick="showScore()">✓ 提交，查看得分</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PROJECTS = {
+  "1": {
+    name: "项目一  建立业务关系",
+    sub: "Establishing Business Relations",
+    models: [
+      {
+        id: "1.1.1", zh: "发送建立贸易关系信函（买方→卖方）", en: "Intro from Buyer",
+        sentences: [
+          { zh: "敬启者，我方从电子商务平台<b>得知</b>你方公司名称，<b>了解到</b>你方在出口纺织品方面经验丰富。", en: "Dear Sir/Madam, We owe your name to e-business platform, from which we understand that you are well experienced in the export of textiles with service." },
+          { zh: "<b>借此</b>机会自我<b>介绍</b>，我方是一家为美国客户购买各种服装、桌布、床单等产品的进口商。", en: "We take this opportunity to introduce ourselves as one of the importers buying various kinds of garments, table cloths, bed sheets, etc., for clients in the USA." },
+          { zh: "为了<b>让</b>我方更好地了解你方产品，请<b>寄</b>给我方产品目录和价目表。", en: "In order to let us have a better understanding of your products, would you please send us by return mail catalogues and pricelists of your products?" },
+          { zh: "关于我方财务状况和声誉，请向苏格兰皇家银行<b>查询</b>。", en: "Concerning our financial status and reputation, please refer to the Royal Bank of Scotland." },
+          { zh: "我方<b>期待</b>不久就<b>收到</b>你方回信。", en: "We anticipate hearing from you in the near future. Your faithfully, Wendy Brown" },
+        ]
+      },
+      {
+        id: "1.1.2", zh: "建立贸易关系信函（卖方→买方）", en: "Intro from Seller",
+        sentences: [
+          { zh: "敬启者，<b>很高兴</b>在2023年美国拉斯维加斯服装展上<b>见到</b>你。", en: "Dear Sirs, Glad to see you at The MAGIC Las Vegas 2023 show." },
+          { zh: "我是亚历山大贸易公司的保罗·约翰逊，我方<b>获悉</b>你方<b>是</b>纺织品原料的重要买家。", en: "This is Paul Johnson from Alexander Trading Company. We learned that you are an important buyer of textiles materials." },
+          { zh: "我方现<b>写信</b>是希望与你方<b>建立</b>贸易关系。", en: "We are now writing to establish business relations with you." },
+          { zh: "我们<b>很荣幸</b>地将自己介绍为纺织行业的主要出口商之一。", en: "We are pleased to introduce ourselves as one of the leading exporters in the line of textile materials." },
+          { zh: "我方所有产品均品质优良、价格合理，因此在许多国家<b>享有</b>很高声誉。", en: "All our products are of high quality and reasonable prices, so they enjoy high reputation in many countries." },
+          { zh: "为使您对我们的产品有大致了解，我们随函<b>附上</b>一份目录和价目单。", en: "To give you a general idea of our products, we enclose herewith a copy of our catalogue and a pricelist." },
+          { zh: "如果你对其中任何一个<b>有</b>兴趣，请<b>告知</b>我们。", en: "If you have interest in any of them, please let us know." },
+          { zh: "我们<b>希望</b>尽快<b>收到</b>你方来信。", en: "We hope to hear from you soon. Your faithfully, Paul Johnson" },
+        ]
+      },
+      {
+        id: "1.2.1", zh: "回复建立贸易关系信函（卖方）", en: "Reply from Seller",
+        sentences: [
+          { zh: "亲爱的布朗女士，<b>感谢</b>你方本月5日的来信，我方非常<b>乐意</b>与你方<b>建立</b>贸易关系。", en: "Dear Ms.Brown, Thank you for your letter of 5th this month and we shall be glad to enter into business relations with you." },
+          { zh: "我是中国BCD贸易公司的王海伦，凭借多年经验，我们<b>供应</b>各种品质优良、价格合理的纺织品。", en: "This is Helen Wang from BCD Trade Company, China. We supply various textiles of high quality at reasonable prices with many years' experience." },
+          { zh: "随函<b>附寄</b>我公司的电子产品目录及价目表，请查收。请<b>联系</b>我方获取更多详细信息。", en: "Enclosed please find an e-catalogue and a pricelist of our products. Please contact us for more details needed." },
+          { zh: "关于我方财务状况和声誉，请向中国银行<b>查询</b>。", en: "Concerning our financial status and reputation, please refer to the Bank of China." },
+          { zh: "<b>期待</b>早复佳音。", en: "Looking forward to your early and favorable reply. Yours sincerely, Helen Wang" },
+        ]
+      },
+      {
+        id: "1.2.2", zh: "回复建立贸易关系信函（买方）", en: "Reply from Buyer",
+        sentences: [
+          { zh: "我方<b>收到</b>你方2024年2月5日的来函，非常感谢，并<b>高兴</b>地<b>得知</b>你方<b>希望</b>与我方<b>建立</b>业务关系。", en: "Dear Mr.Johnson, We have received with thanks your letter of Feb.05,2024 and are glad to learn that you wish to open an account with us." },
+          { zh: "我方<b>从事</b>纺织品进口业务多年。现在，我方正在<b>寻求</b>高品质的人造丝。", en: "We have been the importer of textiles for many years. At present, we are looking for rayon of high quality." },
+          { zh: "若蒙你方寄送新样品供我方参考，将不胜<b>感激</b>。", en: "We shall be much obliged if you send us your new samples for our reference." },
+          { zh: "如蒙告知，不胜<b>感激</b>。", en: "Your favorable information will be appreciated. Yours faithfully, Helen Wang" },
+        ]
+      },
+      {
+        id: "1.3.1", zh: "客户资信调查（向银行查询买方）", en: "Credit Check – Buyer",
+        sentences: [
+          { zh: "敬启者，我方已<b>收到</b>来自美国拉斯维加斯ABC公司的一个大订单。", en: "Dear Sirs, We have received a large order from ABC Company, Las Vegas, USA." },
+          { zh: "你方被<b>推荐</b>为证明银行。若蒙贵方<b>提供</b>上述公司的经营状况信息，我方将不胜<b>感激</b>。", en: "You are referred as the reference bank. We would therefore appreciate it if you would provide us with information about the business standing of the above-mentioned firm." },
+          { zh: "劳驾帮我方<b>获得</b>所需的财务状况和其他信息，好吗？", en: "Will you please be good enough to obtain for us the financial standing and other information we need?" },
+          { zh: "任何你方<b>提供</b>的信息都将得到严格的<b>保密处理</b>。先行<b>致谢</b>。", en: "Any information that you may provide for us will be treated in strict confidence. Thank you in advance." },
+        ]
+      },
+      {
+        id: "1.3.2", zh: "调查潜在客户资信（向银行查询卖方）", en: "Credit Check – Seller",
+        sentences: [
+          { zh: "敬启者，英国的亚历山大贸易公司已经<b>致函</b>我方，并<b>希望</b>与我方<b>建立</b>贸易关系。", en: "Dear Sirs, Alexander Trading Company in England has written to us that they are the leading supplier of textiles and wish to establish business relations with us." },
+          { zh: "因为之前我方与他们从未<b>有过</b>业务往来，对于你们可能<b>提供</b>的任何信息我方都将<b>感激</b>。", en: "As we have no business relations with them before, we should be most grateful for any information you may provide." },
+          { zh: "1. 你和这个公司<b>建立</b>业务关系有多长时间了？", en: "1. How long have you been in business relations with this company?" },
+          { zh: "2. 他们的信用额度<b>是</b>多少？", en: "2. What is their credit limit in your bank account?" },
+          { zh: "3. 他们的产品质量<b>怎么样</b>？先行<b>致谢</b>。", en: "3. How is the quality of their products? Thank you in advance." },
+        ]
+      },
+    ]
+  },
+  "2": {
+    name: "项目二  询盘",
+    sub: "Inquiries",
+    models: [
+      {
+        id: "2.1.1", zh: "整理客户询盘信息（买方→卖方）", en: "Inquiry for Costumes",
+        sentences: [
+          { zh: "亲爱的王女士，感谢你方2月7日的邮件，从信中我们<b>得知</b>你方<b>是</b>各类纺织品的主要出口商。", en: "Dear Ms. Wang, Thank you for your E-mail of Feb.7th, from which we know you are a leading exporter of various textiles." },
+          { zh: "目前，女士唐装在美国越来越流行，因此我们<b>考虑</b><b>进口</b>一些。", en: "Chinese costumes for ladies are increasingly popular in America for the time being, so we are considering importing some of them." },
+          { zh: "如果你方能航空<b>邮寄</b>整套产品的剪样给我方，我方会很高兴。", en: "We will be glad if you can airmail us some cuttings covering your full range of products." },
+          { zh: "同时请<b>提供</b>报价，并告知订单量超过3000件时的折扣。", en: "Meanwhile, quotation as well as discount is needed if the quantity is over 3000 pieces." },
+          { zh: "我方<b>期待</b>我们长期的合作。", en: "We anticipate our long-term cooperation. Yours sincerely, Wendy Brown" },
+        ]
+      },
+      {
+        id: "2.2.1", zh: "向新供应商发送询盘信（买方→卖方）", en: "Inquiry for Rayon",
+        sentences: [
+          { zh: "亲爱的约翰逊先生，感谢您2024年2月25日的来信，我们对您<b>寄来</b>的人造丝新样品<b>印象深刻</b>。", en: "Dear Mr. Johnson, Thank you for your E-mail dated Feb.25th, 2024, and we are impressed by your new rayon samples sent to us." },
+          { zh: "我们正在<b>寻找</b>能向我们<b>提供</b>全系列纺织材料的供应商。", en: "We are looking for a supplier who could furnish us with full range of textile materials." },
+          { zh: "现在我方很<b>愿意</b>和你方<b>建立</b>业务关系。", en: "Now we are willing to establish business relations with you." },
+          { zh: "由于我方经常<b>下</b>大订单，我方<b>希望收到</b>你方最优惠的报价。", en: "As we usually place large orders, we would like to receive your most favorable offer." },
+          { zh: "同时，我方<b>想知道</b>你方是否可以一次性<b>满足</b>超过20公吨人造丝的订单。", en: "Meanwhile, we would like to know if you can meet orders for over 20 metric tons of rayon at one time." },
+          { zh: "我方<b>希望</b>尽快<b>收到</b>你方来信。", en: "We hope to hear from you soon. Yours faithfully, Helen Wang" },
+        ]
+      },
+    ]
+  },
+  "3": {
+    name: "项目三  报盘",
+    sub: "Offers",
+    models: [
+      {
+        id: "3.1.1", zh: "整理报盘信的报价信息（卖方→买方）", en: "Offer for Rayon",
+        sentences: [
+          { zh: "亲爱的王女士，<b>感谢</b>你方对我方2024年3月1日人造丝的询盘。", en: "Dear Mrs. Wang, Thank you for your enquiry for our rayon dated March 1st, 2024." },
+          { zh: "按照<b>要求</b>，我方现<b>报盘</b>如下，该报盘以贵公司答复在10日内<b>到达</b>我方为有效。", en: "As requested, we are now making you the following offer, subject to your reply reaching us within 10 days." },
+          { zh: "付款：通过保兑不可撤销的，凭即期汇票<b>支付</b>的信用证。", en: "Payment: By confirmed irrevocable Letter of credit payable by draft at sight." },
+          { zh: "由于我们仓库库存充足，请无需<b>担心</b>供货问题。", en: "As there is a huge stock in our warehouse, there is no need to worry about supply." },
+          { zh: "在通常情况下，我们会在收到信用证后两周内<b>安排</b>发货。", en: "In most cases, delivery can be made in two weeks after receipt of your Letter of credit." },
+          { zh: "同时，如果你的订单量<b>超过</b>100公吨，我们可以<b>给予</b>你10%的折扣。", en: "Meanwhile, we can allow you a 10% discount if your order exceeds 100 metric tons." },
+          { zh: "我方<b>期待</b>我们的第一次合作。", en: "We are looking forward to your first cooperation. Yours faithfully, Paul Johnson." },
+        ]
+      },
+      {
+        id: "3.2.1", zh: "发送报盘信函（卖方→买方）", en: "Offer for Costumes",
+        sentences: [
+          { zh: "亲爱的布朗女士，感谢你方对我们产品的询盘（已收到）。随函<b>附寄</b>了我方最新的电子目录供你方参考。", en: "Dear Ms. Brown, Your enquiry for our product was received with thanks. Our latest e-catalogue is enclosed for your study." },
+          { zh: "关于剪样，它们将另函<b>寄送</b>。", en: "As for sample cuttings, they will be sent under separate cover." },
+          { zh: "<b>按照</b>你方要求，我方现<b>报价</b>如下，此报价有效期仅<b>为</b>15天。", en: "Complying with your request, we are now making the offer as follows, which is valid for 15 days only." },
+          { zh: "运输：在收到信用证后28天内<b>办理</b>。", en: "Shipment: To be effected within 28 days after receipt of L/C." },
+          { zh: "通常1500件的订单没有折扣，但这次我们想为你<b>破例</b>。", en: "There is usually no discount for an order of 1500 pieces, but we would like to make an exception for you this time." },
+          { zh: "如果你方订单准时<b>到达</b>我方，我们将<b>给</b>你5%的折扣。", en: "If your order reaches us on time, we shall give you a 5% discount." },
+          { zh: "我方<b>期待</b>你方早日订货。", en: "We are looking forward to your order at an early date." },
+        ]
+      },
+      {
+        id: "3.2.2", zh: "撰写提价告知函（卖方→买方）", en: "Price Increase Notice",
+        sentences: [
+          { zh: "请问你有<b>收到</b>我方<b>寄</b>的电子目录和剪样么？", en: "Dear Ms Wang, Have you received the e-catalog and the sample cuttings we sent?" },
+          { zh: "很遗憾地<b>通知</b>贵司，由于成本上涨，我方不得不对女士唐装<b>涨价</b>10%。", en: "We're regretful to inform you that we have to raise the price by 10% for the Chinese traditional costumes for ladies due to the rising cost." },
+          { zh: "请允许我们<b>解释</b>涨价的理由。首先，在过去的几个星期，越南的原材料价格突然上涨了。", en: "May we explain the reasons to you? Firstly, there has been a sudden rise in cost of raw material from Vietnam in the past weeks." },
+          { zh: "因此，我方不能<b>维持</b>原价。", en: "As a result, we can't keep our previous quotation." },
+          { zh: "事实上，目前市场上对我方产品的需求日益增长。", en: "In fact, there is a growing demand for our product in the market at present." },
+          { zh: "我们<b>期待</b>您能早日<b>做出</b>回复，否则价格有可能会有新一轮的上涨。", en: "We expect you to make an early decision, or there might be a new rise in price in the market." },
+          { zh: "为了<b>帮助</b>你们在市场上<b>站稳</b>脚跟，如果贵司在本月<b>下</b>试订单，我方仍然<b>准备</b>在新价格的基础上<b>给予</b>你3%的折扣。", en: "To help you stand firmly in the market, we are still prepared to allow you a 3% discount on the new price if you place a trial order this month." },
+        ]
+      },
+    ]
+  },
+  "4": {
+    name: "项目四  还盘",
+    sub: "Counter-Offers",
+    models: [
+      {
+        id: "4.1.1", zh: "整理还盘信息（买方→卖方）", en: "Counter-Offer from Buyer",
+        sentences: [
+          { zh: "亲爱的王女士，感谢贵方及时关注我方询盘，贵方的剪样令我方很满意，但<b>遗憾</b>的是贵方的第二次报价偏高。", en: "Dear Ms. Wang, Thank you for your prompt attention to our enquiry and your sample cuttings are satisfactory to us, but we regret that your second quotation is on the high side." },
+          { zh: "的确你方产品质量很高。但是，你方所报的价格与市场行情不<b>符</b>。", en: "It is true that your products are of high quality. However, the price quoted indeed doesn't match the market level." },
+          { zh: "你方<b>提到</b>原材料价格的突然上涨，但我们<b>相信</b>由于中国和越南同属RCEP成员国，价格变动不大。", en: "You mentioned there was a sudden rise in raw material cost, but we believe the price change is slight since both China and Vietnam are RCEP members." },
+          { zh: "此外，由于国际贸易疲软，运费正在<b>下降</b>。因此我们无法<b>接受</b>你方价格，尤其是新价格。", en: "Moreover, the freight cost is going down because of the weak international trade. Therefore, it is impossible for us to accept your price, especially the new price." },
+          { zh: "如果你方能在新价格的基础上<b>减价</b>10%，我方可以<b>考虑订购</b>1500件。", en: "If you can reduce the price by 10% on the new price, we may consider ordering 1500 pieces." },
+          { zh: "关于付款方式，能否<b>通融</b>我们采用更便捷的方案？比如50%货款以电汇预付，余款采用即期付款交单方式？", en: "As for payment, could you accommodate us with an easier way, say, 50% by T/T in advance and the rest by D/P at sight?" },
+          { zh: "期待你方早日回复，不胜<b>感激</b>。", en: "Your early favorable reply will be highly appreciated. Yours faithfully, Wendy Brown" },
+        ]
+      },
+      {
+        id: "4.1.2", zh: "回复还盘信函（卖方→买方）", en: "Reply to Counter-Offer",
+        sentences: [
+          { zh: "亲爱的布朗女士，我方收到你方3月2日的来信，从中<b>得知</b>你<b>认为</b>我们的报价与市场不符。", en: "Dear Ms.Brown, We are in receipt of your E-mail of Mar. 2nd, from which we learn that you feel our quotation was not in line with the market." },
+          { zh: "我们<b>承认</b>其他来源的货物价格可能略低于我方，但如果你<b>考虑</b>质量和设计，你会<b>发现</b>我们的货物仍然<b>保持</b>竞争力。", en: "We admit prices for goods from other sources may be slightly lower than ours. However, if you take quality and design into consideration, you will find our goods still remain competitive." },
+          { zh: "事实上，我们已<b>报出</b>最低价格，以便<b>达成</b>首笔交易。如果你<b>下</b>5000件订单，我们可以<b>考虑降低</b>价格10%。", en: "In fact, we have quoted you our lowest prices so as to conclude our first transaction. However, if you place an order for 5000pcs, we can consider lowering our price by 10%." },
+          { zh: "此外，对于新客户，我方惯例是<b>接受</b>保兑的不可撤销即期信用证。眼下，我们不能<b>满足</b>你方的付款要求。", en: "Besides, it is our customary practice to accept confirmed irrevocable L/C at sight for new clients. At this stage, we cannot satisfy your needs in payment." },
+          { zh: "我们<b>保证</b>双方在顺利交易几次后，付款方式将会有所改变。", en: "But we promise there will be a change after several smooth transactions between us." },
+          { zh: "我们很抱歉以这种方式<b>拒绝</b>你方的要求，但<b>希望</b>你方能<b>理解</b>我方。我方渴望你方的早日回复。", en: "We are sorry for rejecting your requests in such a way, but hope you can understand us. We are desirous of your response at your earliest convenience. Yours faithfully, Helen Wang" },
+        ]
+      },
+    ]
+  },
+  "5": {
+    name: "项目五  商务合同与订单",
+    sub: "Orders & Contracts",
+    models: [
+      {
+        id: "5.1.1", zh: "接受还盘，确认订单（买方→卖方）", en: "Order Confirmation – Buyer",
+        sentences: [
+          { zh: "亲爱的王女士，非常<b>感谢</b>你3月3日的来信，<b>考虑到</b>我们今后的合作，我们<b>决定接受</b>你们的还盘如下。", en: "Dear Ms. Wang, We thank you very much for your E-mail of Mar. 3rd. Considering our future cooperation, we decide to accept your counter-offer as follows," },
+          { zh: "其他条款按照你方报价和你方惯例。", en: "Other terms are as per your quotation and your usual practice." },
+          { zh: "我们急需这批货，因此若能迅速交货将不胜<b>感激</b>。", en: "The goods are urgently needed, so prompt delivery will be most appreciated." },
+          { zh: "我们<b>希望</b>在短期内能向你方<b>追加</b>更多、更大的订单。", en: "We hope to place further and larger orders with you in the short run. Yours faithfully, Wendy Brown" },
+        ]
+      },
+      {
+        id: "5.1.2", zh: "销售确认书（卖方出具）", en: "Sales Confirmation Form",
+        sentences: [
+          { zh: "卖方<b>确认出售</b>，买方同意购买，具体条款和条件<b>说明</b>如下。", en: "We hereby Confirm having sold to you the under-mentioned goods on terms and conditions as stated below:" },
+          { zh: "在金额和数量上都<b>允许</b>有5%的增减，由卖方决定。", en: "With 5% more or less both in amount and quantity allowed at the seller's option." },
+          { zh: "运输：收到信用证28天之内<b>办理</b>装运。付款方式：通过保兑不可撤销的，凭即期汇票<b>支付</b>的信用证。", en: "SHIPMENT: TO BE EFFECTED WITHIN 28 DAYS after receipt of THE L/C. TERMS OF PAYMENT: BY Confirmed irrevocable L/C PAYABLE BY DRAFT at sight." },
+          { zh: "保险由卖方<b>办理</b>，按CIF价的110%<b>承保</b>中国人民保险公司的《中国保险条款》的一切险和战争险。", en: "INSURANCE: TO BE EFFECTED BY THE SELLER FOR 110% OF CIF Value Covering All risks and war risk AS PER CIC OF PICC." },
+        ]
+      },
+      {
+        id: "5.2.1", zh: "接受订单，回复买方（卖方→买方）", en: "Accepting Order",
+        sentences: [
+          { zh: "亲爱的布朗女士，我们非常<b>高兴收到</b>你方对女士唐装的接受。", en: "Dear Ms Brown, We are very pleased to receive your acceptance for Chinese Traditional Costume for Ladies." },
+          { zh: "我们<b>附上</b>JA93号销售确认书一式两份，请<b>会签</b>并<b>寄回</b>一份给我们，以便我方存档。", en: "We enclose herewith our Sales Confirmation No. JA93 in duplicate, a copy of which please countersign and return to us for our record." },
+          { zh: "我们<b>相信</b>你方会尽早<b>开立</b>相关的信用证。", en: "We trust you will open the relevant L/C at an early date." },
+          { zh: "我们收到你的信用证就会<b>安排</b>发货，<b>期待</b>货物能令你们满意。", en: "We shall arrange delivery as soon as we get your L/C and expect the goods will turn out to your satisfaction." },
+          { zh: "我们<b>希望</b>可以<b>收到</b>你方进一步的订单。", en: "We hope we may have further orders from you. Yours sincerely, Helen Wang" },
+        ]
+      },
+      {
+        id: "5.2.2", zh: "确认订单，寄回合同（买方→卖方）", en: "Confirming Order",
+        sentences: [
+          { zh: "亲爱的约翰逊先生，非常<b>感谢</b>你方3月2日关于人造丝DK001的电子邮件。", en: "Dear Mr Johnson, Thank you for your e-mail of Mar.2nd covering Rayon DK001." },
+          { zh: "经过考虑，我们很高兴地向你方<b>订购</b>下列货物。", en: "After consideration, we are pleased to place an order with you for the following:" },
+          { zh: "<b>附寄</b>BCD1802号采购合同一式两份，请<b>会签</b>并<b>寄回</b>一份供我方存档。", en: "Purchase Contract No.BCD1802 is enclosed in duplicate, a copy of which please countersign and return to us for our file." },
+          { zh: "期待你方早日确认。", en: "Looking forward to your early confirmation. Yours faithfully, John Smith" },
+        ]
+      },
+      {
+        id: "5.3.1", zh: "重复订货，来函请求（买方→卖方）", en: "Repeat Order – Request",
+        sentences: [
+          { zh: "我们已<b>收到</b>&ldquo;红星&rdquo;号轮装运的货物，很高兴<b>通知</b>你方，你们的货物令人满意。", en: "We have received the captioned shipment ex S.S. 'Red Star', and are pleased to inform you that all your goods are found quite satisfactory," },
+          { zh: "由于市场急需更多的数量，我们想向你方再次<b>订购</b>下列商品。", en: "As the market is in great need of additional quantities, we would like to book with you a repeat order for the following items." },
+          { zh: "随信<b>附上</b>形式发票一张，请查收，并<b>期待</b>您的惠复。", en: "Enclosed please find our Proforma Invoice and we look forward to your favorable reply." },
+        ]
+      },
+      {
+        id: "5.3.2", zh: "拒绝重复订货（卖方→买方）", en: "Rejecting Repeat Order",
+        sentences: [
+          { zh: "但我们很<b>遗憾</b>地<b>告诉</b>您，目前我方没有贵方所<b>需</b>的货物库存，预计至少在一个月内无法再次交货。", en: "But we regret to say that we have no stock of the patterns you required for the time being and do not expect further deliveries for at least another one month." },
+          { zh: "新货一<b>到</b>，我们就会立即与你方<b>联系</b>。", en: "We shall contact you as soon as our new supplies come in." },
+          { zh: "如果您对其他产品感兴趣，请毫不<b>犹豫</b>地<b>告知</b>我们。", en: "If you are interested in any other items, please do not hesitate to let us know." },
+          { zh: "我们向你方<b>保证</b>我们会及时<b>关注</b>你方要求。", en: "We assure you that your requirement will receive our prompt attention." },
+        ]
+      },
+      {
+        id: "5.3.3", zh: "接受重复订货（卖方→买方）", en: "Accepting Repeat Order",
+        sentences: [
+          { zh: "由于我方一位客户<b>要求</b>延期交货，我们现在有现货可供您方选择。", en: "Because one of our customers requested a delay in delivery, we have the goods available to you now." },
+          { zh: "我们<b>保证</b>货物可以立即<b>交付</b>。", en: "We assure the goods can be delivered at once." },
+        ]
+      },
+    ]
+  },
+  "6": {
+    name: "项目六  包装",
+    sub: "Packing",
+    models: [
+      {
+        id: "6.1.1", zh: "提出包装要求（买方→卖方）", en: "Packing Requirements",
+        sentences: [
+          { zh: "尊敬的李先生，关于销售确认单号BG608，我想向您<b>提供</b>我们订购货物的具体包装要求。", en: "Dear Mr. Li, Regarding Sales Confirmation No, BG608, I would like to give you the specific packing requirements for our ordered goods." },
+          { zh: "每个物品都应该被<b>装进</b>一个塑料袋，然后再放入一个纸盒中。", en: "Each item should be packed in a plastic bag and then to a paper box." },
+          { zh: "20个盒子被<b>装</b>在一个木箱内，每个盒子的两侧都装有聚乙烯缓冲材料。", en: "20 boxes are packed in a wooden case with polythene cushions in each side of the cases." },
+          { zh: "这些箱子应该足够坚固，能够<b>承受</b>粗暴的搬运和长途海上运输。", en: "The cases should be strong enough to bear rough handling and long-distance ocean transportation." },
+          { zh: "请在<b>完成</b>包装和唛头后，将一个样品箱的照片<b>发送</b>给我。", en: "Please send me the photo of one sample case after finishing the packing and shipping marks." },
+          { zh: "我们<b>希望</b>您能<b>满足</b>我们的包装要求，相关包装费用将按约定由贵方<b>承担</b>。", en: "We hope you can meet our packing requirements and packing charges shall be afforded by you as arranged." },
+          { zh: "如对包装<b>有</b>任何疑问，请及时与我<b>联系</b>。", en: "If you have any questions about the packing, please contact me in time. Thank you in advance." },
+        ]
+      },
+      {
+        id: "6.1.2", zh: "回复包装要求（卖方→买方）", en: "Reply to Packing Requirements",
+        sentences: [
+          { zh: "尊敬的史密斯先生，<b>感谢</b>您通过电子邮件<b>确认</b>订购1200件床单，并附上货物包装方案。", en: "Dear Mr. Smith, We thank you for your E-mail confirming your order for 1,200 pcs of bed sheets together with your proposal of the packing for the goods." },
+          { zh: "关于外包装，如您所愿，我们可以<b>使用</b>木箱。", en: "As regards the outer packing, we could use wooden cases if preferred." },
+          { zh: "我们始终将客户的利益<b>放在</b>首位。", en: "We always have our client's interest in mind." },
+          { zh: "但是，我们为床品改进的外包装，采用适合海运的纸箱，已经受到我们常规客户的广泛<b>认可</b>。", en: "But, our improved outer packing with seaworthy cartons for bed sheets have been widely accepted by our regular clients." },
+          { zh: "自我们采用这种包装形式以来，至今尚未有任何客户提出任何抱怨。", en: "Up till now, there has not been a single complaint from any of them since our adoption of this form of packing." },
+          { zh: "此外，使用纸箱可以降低包装成本，减少货物重量，从而相应地<b>节省</b>运费。", en: "Furthermore, by using carton, the packing cost, and cargo weight can be reduced and freight charge can be saved accordingly." },
+          { zh: "如果您<b>坚持</b>使用木箱作为外包装，我们会严格<b>遵守</b>您的指示。请注意，额外的费用应由您<b>承担</b>。", en: "If you insist on wooden cases for outer packing, we would strictly follow your instruction. Kindly note that the extra charges should be borne by you." },
+          { zh: "如果您<b>接受</b>上述包装建议，我们将按我们<b>推荐</b>的方式使用适航纸箱<b>包装</b>货物。", en: "If you accept the above suggestion on packing, we shall pack the goods in seaworthy cartons as we have recommended." },
+        ]
+      },
+    ]
+  },
+  "7": {
+    name: "项目七  保险",
+    sub: "Insurance",
+    models: [
+      {
+        id: "7.1.1", zh: "请求卖方代办保险（买方→卖方）", en: "Requesting Insurance Cover",
+        sentences: [
+          { zh: "关于我方第BG608号的销售确认书，我方所订购的FOB贸易术语下的12000件床单将从中国宁波装运。", en: "With reference to our S/C No.BG608 for 12000 pieces of Bed Sheets on FOB basis, which are to be shipped from Ningbo, China to Incheon, Korea, by S.S.\\\"Quick Fish\\\" on Apr.15th and S.S \\\"HAN SUN\\\" on May 1st." },
+          { zh: "我方想<b>请求</b>你方为我方按发票金额的120%<b>投保</b>一切险和罢工险，这样对我方来说更方便，能<b>节约</b>很多时间。", en: "We would like to ask you to effect insurance for us for 120% of the invoice value against All Risks and Strikes Risk, which will be more convenient and save much time for us." },
+          { zh: "当然，保险费由我方承担。", en: "Surely, the premium should be for our account." },
+          { zh: "同时，如果贵方能<b>寄</b>给我们一份2024年的新产品目录供我方参考，我们将不胜<b>感激</b>。", en: "Meanwhile, we should appreciate it if you could send us by return a catalogue regarding the new products in 2024 for our reference." },
+          { zh: "我们<b>期盼</b>您的早日答复和贵公司目录。", en: "We are looking forward to your early reply and the catalogue." },
+        ]
+      },
+      {
+        id: "7.1.2", zh: "通知客户已办理保险（卖方→买方）", en: "Notification of Insurance",
+        sentences: [
+          { zh: "我们已经收到贵方4月15日来函，<b>要求</b>我方代你方为12000件床单<b>办理</b>保险。", en: "We are in receipt of your E-mail of Apr. 15th requesting us to effect insurance on the 12000 pieces of bed sheets for your account." },
+          { zh: "我们已经<b>办理</b>了相应的保险。", en: "We have arranged for the insurance cover accordingly." },
+          { zh: "很高兴<b>告知</b>你方，我们已按194400美元的金额向中国人民保险公司为你方订货<b>投保</b>一切险和罢工险。", en: "We are glad to inform you that we have insured the goods with PICC against All Risks and Strikes Risk for USD 194,400." },
+          { zh: "随函<b>附上</b>了保险单和保险费的借记单。", en: "The insurance policy and our debit note for the premium are attached." },
+          { zh: "供你方参考，中国人民保险公司理赔迅速、公正，在国际上<b>享有</b>盛誉。", en: "For your information, the People's Insurance Company of China is always prompt and equitable in settling claims and enjoys world reputation." },
+          { zh: "如<b>发现</b>被保险货物遭受损失或损坏，你方应立即向保单中规定的调查机构<b>申请</b>调查，<b>处理</b>此事。", en: "If the insured goods are found to have sustained loss or damage, you should immediately apply for survey to the survey agent stipulated in the policy to handle the matter." },
+        ]
+      },
+      {
+        id: "7.1.3", zh: "阅读保险单条款（保险单正文）", en: "Reading the Insurance Policy",
+        sentences: [
+          { zh: "本保险单<b>证明</b>中国人民财产保险股份有限公司（简称&ldquo;本公司&rdquo;）根据被保险人的要求，在被保险人向承保人缴付约定保险费后，承保下述货物运输保险，以本保险单条款为条件，按照背面所印条款及所附特别条款办理。", en: "This policy of insurance witnesses that PICC Property and Casualty Company Limited at the request of the Insured and in consideration of the agreed premium paid to the company by the Insured, undertakes to insure the under-mentioned goods in transportation subject to the conditions of this Policy as per the clauses printed overleaf and other special clauses attached hereon." },
+          { zh: "<b>如发生</b>本保险单项下可能引起<b>索赔</b>的<b>损失</b>或损坏，应立即通知本公司或下述代理人查勘。如有索赔，应提交任一联<b>原件</b>保单及有关文件，<b>交出</b>给本公司；如其中一份正本已用于索赔（<b>完成</b>），其他正本自动<b>失效</b>。", en: "In the event of loss or damage which may result in a claim under this Policy, immediate notice must be given to the Company or Agent as mentioned hereunder. Claims, if any, one of the original policy which has been issued in two originals together with the relevant documents shall be surrendered to the Company, if one of the original policy has been accomplished, the others to be void." },
+        ]
+      },
+    ]
+  },
+  "8": {
+    name: "项目八  装运",
+    sub: "Shipment",
+    models: [
+      {
+        id: "8.1.1", zh: "催促装运（买方→卖方）", en: "Urging Shipment",
+        sentences: [
+          { zh: "关于我们第JA93号的销售确认书，我们<b>希望</b><b>提请</b>你方注意，装船日期日益<b>临近</b>。", en: "With reference to our Sales Confirmation No. JA93, we wish to draw your attention to the fact that the shipment date is approaching rapidly." },
+          { zh: "然而，到目前为止，我方还未收到你方关于发货的任何消息。", en: "However, up to the moment no news has come from you about the shipment." },
+          { zh: "当我方<b>下</b>订单时，我们明确<b>指出</b>准时装运特别重要，因为我们的客户急需此货。", en: "When we placed the order, we explicitly pointed out that punctual shipment was of special importance because our customers were in urgent need of the goods." },
+          { zh: "事实上，他们正<b>催促</b>我们早日交货。", en: "And are in fact pressing us for an early delivery." },
+          { zh: "鉴于这种情况，对我们来说进一步<b>延展</b>第BN-23-3256号信用证是不可能的，该信用证将于4月22日<b>到期</b>。", en: "Such being the case, it is obviously impossible for us to further extend our L/C No.BN-23-3256, which expires on Apr. 22nd." },
+          { zh: "请<b>理解</b>我们<b>解决</b>这个问题的严重性和紧迫性。", en: "Please understand how serious and urgent it is for us to resolve this matter." },
+          { zh: "我们<b>希望</b>你方能尽力按照信用证规定发货。如能立即电告装船通知，则不胜<b>感激</b>。", en: "We hope you can make every effort to effect the shipment of these goods as stipulated in the L/C, and shall appreciate it if you let us have your telegraphic shipping advice without any delay." },
+        ]
+      },
+      {
+        id: "8.1.2", zh: "回复催运信函（卖方→买方）", en: "Reply to Urging Shipment",
+        sentences: [
+          { zh: "我们已经收到你方2024年4月5日的来信，信中<b>催促</b>我方在合同规定的时间内<b>办理</b>装运。", en: "We are in receipt of your letter of Apr.5th, 2024, urging us to effect shipment in the contracted time." },
+          { zh: "首先，对至今未向贵方<b>提供</b>有关这次订货的任何消息深表<b>歉意</b>。", en: "Firstly, we apologize to you for not having offered you any information about this order so far." },
+          { zh: "事实上，我们一直<b>要求</b>厂家<b>给出</b>准确的交货期。我们<b>认为</b>在<b>获得</b>确定消息前给贵方<b>写信</b>无济于事。", en: "As a matter of fact, we have been requesting our manufacturer to give us the exact delivery date all the time and we feel it useless to write to you before getting the definite news." },
+          { zh: "现在我们很高兴地<b>告知</b>你方厂家已经<b>同意</b>在两周内安排发货，并正在<b>安排</b>由&ldquo;红星&rdquo;号轮<b>装运</b>。", en: "Now we are glad to inform you that the manufacturer has agreed to make delivery within two weeks and is arranging to ship the goods by S.S. &ldquo;Red star&rdquo;." },
+          { zh: "一旦货物装船，我方将立即<b>通知</b>你方。", en: "We will notify you as soon as the goods are shipped on board." },
+          { zh: "我们真诚地<b>希望</b>这个安排能令你方<b>满意</b>，并对给您造成的不便道歉。", en: "We sincerely hope this arrangement will satisfy you and apologize for the inconvenience caused to you." },
+        ]
+      },
+      {
+        id: "8.2.1", zh: "修改装运条款，要求提前装运（买方→卖方）", en: "Requesting Earlier Shipment",
+        sentences: [
+          { zh: "兹<b>提及</b>我方第BG608号销售确认书项下12000件床单，将于下月初<b>装运</b>。", en: "We wish to refer to our S/C No.BG608 for 12000 pieces of bed sheets due to be shipped at the beginning of May." },
+          { zh: "当我方<b>下</b>订单时，我们的库存被<b>认为</b>足够充足，可以<b>持续</b>到5月份。", en: "When this order was placed, our stocks were considered to be sufficiently enough to last until May." },
+          { zh: "然而，最近床单的需求量很大，<b>导致</b>我们的库存量很低。因此，我们希望你方将装船时间<b>提前</b>到4月15日。", en: "However, there has been a great demand for the garments recently, which has brought low stock level of our goods. Therefore, we would like you to advance the arrangement of shipment to April 15." },
+          { zh: "我们<b>意识到</b>更改交货日期可能会给你方带来<b>不便</b>，我们对此表示诚挚的歉意。", en: "We realize that the change of delivery date will probably inconvenience you and we offer our sincere apologies." },
+          { zh: "我们<b>知道</b>你方会<b>理解</b>，若非有令人信服的理由，我方是不会<b>要求</b>提早发货的。", en: "We know that you will understand that we would not ask for earlier delivery if we did not have compelling reasons for doing so." },
+          { zh: "鉴于我们长期友好的商业关系，如果贵方能尽力<b>满足</b>我方要求，我方将不胜感激。", en: "In view of our longstanding, cordial commercial relationship, we would be very grateful if you would make a special effort to comply with our request." },
+        ]
+      },
+      {
+        id: "8.2.2", zh: "回复修改装运条款的信函（卖方→买方）", en: "Reply to Modification",
+        sentences: [
+          { zh: "收到你方2024年4月6日的来信，<b>要求</b>我方提前交货。", en: "We are in possession of your E-mail of April 06, 2024, requesting us for earlier delivery of the goods." },
+          { zh: "抱歉我们不能按要求那样<b>做</b>。", en: "Unfortunately, we are very sorry for our inability to do that as requested." },
+          { zh: "虽然我们很想<b>满足</b>你方要求，但由于我们的库存有限，我们最多只能在4月15日<b>发</b>第一批货4000件，其余的在5月1日发货。", en: "Although we are eager to meet your request, as our stock of these goods is limited, the best we can do is to deliver the first lot of 4000 pieces on Apr.15th and the rest on May 1st." },
+          { zh: "另外，船公司<b>通知</b>我们到本月底舱位已经订满了。", en: "Moreover, we have been informed by the shipping company that the shipping space has been fully booked up to the end of this month." },
+          { zh: "为使货物及时运抵你处，我们<b>建议</b>你方<b>允许</b>分批装运和经香港转运，这样你方收货将不会产生<b>延误</b>。", en: "In order that your goods will arrive at you on time, we suggest that you allow partial shipment and transshipment via Hong Kong, which will not delay your receipt of goods." },
+          { zh: "但是你方应<b>承担</b>额外的费用。如果你方早日确认，我方不胜<b>感激</b>。", en: "But you should bear the extra charges. The earlier confirmation from you is appreciated." },
+        ]
+      },
+      {
+        id: "8.3.1", zh: "发送装船通知（卖方→买方）", en: "Shipping Advice",
+        sentences: [
+          { zh: "很高兴<b>通知</b>你方，我们已经将4000件床单<b>装上</b>&ldquo;快鱼&rdquo;号轮，它预计将于2024年4月15日到达目的港。", en: "We are pleased to inform you that we have shipped 4000 pieces of bed sheets on board S.S. &ldquo;Quick fish&rdquo;, sailing for the destination port on Apr. 15th, 2024." },
+          { zh: "随函<b>附寄</b>一套关于这次货物的装运单据，如下：", en: "Enclosed please find one set of the shipping documents covering this consignment as follows:" },
+          { zh: "正本已通过我们的银行<b>寄出</b>给你方。", en: "The originals of them are being sent to you through our bankers." },
+          { zh: "我们<b>希望</b>这批货能及时<b>抵达</b>你方以满足你方的紧急需求，并令你方完全<b>满意</b>。", en: "We hope this shipment will reach you in time to meet your urgent need and turn out to your entire satisfaction." },
+        ]
+      },
+    ]
+  },
+  "9": {
+    name: "项目九  支付",
+    sub: "Payment",
+    models: [
+      {
+        id: "9.1.1", zh: "探讨支付方式（买方→卖方）", en: "Discussing Payment Terms",
+        sentences: [
+          { zh: "关于你方付款条件，我们很遗憾地<b>通知</b>你方，在此促销阶段，我们不能接受，", en: "Referring to your payment terms, we regret to inform you that it is not acceptable to us during this sales-pushing stage," },
+          { zh: "因为开立信用证将使我们<b>涉及</b>大笔费用，并长期占用资金。", en: "for establishment of an L/C would involve us in a lot of expenses and the tie-up of funds for a long time." },
+          { zh: "作为一次尝试，我方想请贵方<b>考虑</b>允许我方用即期付款交单方式付款。", en: "We would like you to take into consideration of our request for payment by Documents against Payment at sight." },
+          { zh: "我方<b>相信</b>此安排对你方影响不大，希望得到您的允许。", en: "We trust that this arrangement will make little difference to you and hope to meet with your approval." },
+        ]
+      },
+      {
+        id: "9.1.2", zh: "回复支付方式建议（卖方→买方）", en: "Reply to Payment Proposal",
+        sentences: [
+          { zh: "如你所知，对于初次合作我们的惯例是以信用证方式<b>付款</b>。", en: "As you know, it is our usual practice to make payment by Letter of credit for the first cooperation." },
+          { zh: "但是为了<b>帮助</b>你方在你方市场<b>推销</b>我们的产品，作为特例，我们<b>准备</b>仅此次<b>接受</b>你方即期付款交单的建议。", en: "But in order to help you push the sales of our products in your market, we are, as an exceptional case, prepared to accept your proposal of D/P at sight only for this time." },
+          { zh: "你方所订购<b>列出</b>的货品均有现货供应，收到你方确认后将立即进行<b>包装</b>并<b>交付</b>。", en: "All the items listed in your order are available from stock and will be packed and delivered upon receipt of your acknowledgement." },
+        ]
+      },
+      {
+        id: "9.2.1", zh: "要求更改支付方式（买方→卖方）", en: "Requesting D/A Payment",
+        sentences: [
+          { zh: "我方写信<b>通知</b>你方，最近我们已经<b>收到</b>了一些你方新款床单的询盘。我们<b>认为</b>这些商品有<b>潜在的</b>市场。", en: "We are writing to inform you that we have recently received quite some enquiries for your bed sheets. We feel that there is a prospective market for these goods." },
+          { zh: "由于他们目前在这里不太受欢迎，我们不能<b>指望</b>定期销售。", en: "As they now enjoy little popularity here, we cannot count on regular sales." },
+          { zh: "因此，我们<b>发现</b>不可能自负盈亏地<b>采购</b>它们。", en: "Thus we find it impossible to make purchases on our own account." },
+          { zh: "我们<b>建议</b>用承兑交单的方式付款，这肯定会<b>提供</b>良好的前景。", en: "We are making the proposal for payment by Documents against Acceptance, which will be sure to offer good prospects." },
+          { zh: "如果贵方能优先考虑上述要求，并在方便时尽早<b>给</b>我方一个满意的答复，我们将不胜感激。", en: "We should be grateful if you kindly give priority to the consideration of the above request and send us a favorable reply at your earliest convenience." },
+        ]
+      },
+      {
+        id: "9.2.2", zh: "回复，提议改用电汇（卖方→买方）", en: "Counter-Proposing T/T Payment",
+        sentences: [
+          { zh: "我们收到您4月3日的来信，信中您<b>要求</b>用承兑交单方式付款。", en: "We are in possession of your E-mail dated Apr. 3rd, in which you asked for payment by Documents against Acceptance." },
+          { zh: "我方已认真<b>考虑</b>过你方要求，但遗憾地<b>告知</b>我方不能<b>同意</b>你方的D/A条款，因为此次交易总金额过大。", en: "We have considered your request seriously, but regret to inform you that we are unable to agree to your D/A terms, because the total amount of this transaction is so large." },
+          { zh: "而且，目前，世界金融市场十分不稳定，且外汇汇率<b>波动</b>频繁。", en: "Moreover, at present, the world monetary market is rather unstable, and the foreign exchange rate fluctuates frequently." },
+          { zh: "但是，考虑到我们长期的友好合作关系，我们愿意各让一步，以电汇方式<b>付款</b>。", en: "However, in consideration of our long-term friendly cooperation, we would like to make payment by T/T to meet each other half way." },
+          { zh: "你方需要先<b>付</b>30%的定金，余款以电汇方式凭提单副本支付。", en: "You need to pay 30% down payment in advance, and the balance by T/T against the copy of B/L." },
+          { zh: "如果你方<b>认为</b>我方的建议可行，请尽快<b>让</b>我方知道。", en: "If you find our proposal acceptable, please let us know as soon as possible." },
+        ]
+      },
+      {
+        id: "9.3.1", zh: "催开信用证（卖方→买方）", en: "Urging L/C Opening",
+        sentences: [
+          { zh: "我们现写信<b>通知</b>你方，销售确认书第JA93号项下的女式唐装已经备妥待运很久了，且交货期已<b>临近</b>。", en: "We are writing to inform you that Chinese traditional Costume for Ladies under Sales Confirmation No. JA93 have been ready for shipment for a long time and the date of delivery is approaching." },
+          { zh: "按约定，你方信用证应于3月15日前<b>到达</b>我方。但是，我方尚未<b>收到</b>你方相关的信用证。", en: "As agreed, your L/C should reach us before Mar.15th. However, we have not yet received your relevant L/C." },
+          { zh: "若你方能加快开立信用证，这将<b>帮助</b>我们在规定时间内<b>执行</b>你方订单。", en: "It will help us execute your order within the stipulated time if you can expedite establishment of the L/C." },
+          { zh: "为了<b>避免</b>随后修改，请务必确保信用证的条款与销售合同的条款完全一致。", en: "In order to avoid subsequent amendment, please see to it that the stipulations of L/C are in exact accordance with the terms of the Sales Confirmation." },
+          { zh: "期待早日<b>收到</b>你方的信用证。", en: "We are looking forward to receiving your L/C at an early date." },
+        ]
+      },
+      {
+        id: "9.3.2", zh: "要求修改信用证（卖方→买方）", en: "Requesting L/C Amendment",
+        sentences: [
+          { zh: "我方已<b>收到</b>你方以我们为受益人、按照第JA93号销售确认书<b>开立</b>的标题信用证，对此我们表示感谢。", en: "We have received with thanks your captioned L/C in our favor established against Sales Confirmation No. JA93." },
+          { zh: "在仔细<b>核对</b>条款之后，我方<b>发现</b>以下三点与销售合同的规定不<b>符</b>。请<b>修改</b>信用证如下：", en: "After checking up the clauses carefully, we find that the following three points do not conform to those stipulated in the covering Sales Contract. Please amend the L/C as follows:" },
+          { zh: "2. 你方信用证<b>规定</b>不允许转运。由于最近没有驶往你港的直达轮船，我们不得不经由香港<b>运输</b>货物。", en: "2. It is stipulated in your L/C that transshipment is not allowed. There being no direct steamer sailing for your port recently, we have to ship the goods via Hong Kong." },
+          { zh: "因此，我们<b>要求</b>你方将信用证修改为<b>读作</b>&ldquo;允许转运&rdquo;。", en: "Therefore, we are asking you to amend your L/C to read" },
+          { zh: "3. 由于你方信用证晚到，我们无法在4月初<b>安排</b>装运。请将装运日期和你方信用证的有效期分别<b>延展</b>。", en: "Owing to the late arrival of your L/C, it is impossible for us to make shipment at the beginning of April. Please extend the date of shipment to Apr. 7th, 2024 and the validity of your L/C to Apr.22nd, 2024 respectively." },
+          { zh: "请就上述修改与你方银行<b>联系</b>，并<b>确保</b>修改通知在2024年3月25日之前<b>到达</b>我方。", en: "Please approach your banker about the above modifications, and make sure that the amendment advice reaches us by Mar. 25th, 2024." },
+        ]
+      },
+    ]
+  },
+  "10": {
+    name: "项目十  索赔和理赔",
+    sub: "Claims & Settlements",
+    models: [
+      {
+        id: "10.1.1", zh: "提出质量索赔（买方→卖方）", en: "Quality Claim",
+        sentences: [
+          { zh: "我们已经<b>收到</b>第BCD1802号购货合同项下的货物。", en: "We have received the goods under S/C No.BCD1802." },
+          { zh: "很遗憾，你方的产品质量比你方<b>承诺</b>的质量要差，我方感到不满意。", en: "Much to our regret, we are not satisfied with the quality of the goods, which is inferior to that promised by you." },
+          { zh: "质量远低于合同标准，因此<b>使</b>我们的产品滞销。我们将<b>寄回</b>一个样品供你方研究。", en: "The quality is far below the contracted standard, so it makes our products quite unsalable. We will return one sample to you for study." },
+          { zh: "鉴于以上所述，我方<b>建议</b>你方<b>给予</b>我们发票金额的10%的折扣作为补偿。", en: "In view of the above, we suggest you give us a 10% discount of the invoice value as a compensation." },
+          { zh: "请尽快<b>让</b>我们知道你方的决定。", en: "Please let us know your decision as soon as possible." },
+        ]
+      },
+      {
+        id: "10.1.2", zh: "拒绝索赔（卖方→买方）", en: "Refusing a Claim",
+        sentences: [
+          { zh: "我们很遗憾地<b>得知</b>你方对我们的货物不满意。", en: "We are sorry to learn that you are not satisfied with our goods." },
+          { zh: "经仔细<b>比较</b>你方退回的样品和经你方<b>确认</b>过的复样，我们并未<b>发现</b>两者之间有何不同。", en: "We have carefully compared the sample you returned with our duplicate sample which is confirmed by you, but we can't find any difference between them." },
+          { zh: "这也经过了SGS公司<b>确认</b>，两者的质量完全相同。", en: "It also has been confirmed by SGS that both of the qualities are identical." },
+          { zh: "我们<b>抱歉</b>我们不能<b>接受</b>你方的索赔。我们<b>希望</b>你能够<b>理解</b>。", en: "We apologize that we can't accept your claim. We hope you will understand it." },
+        ]
+      },
+      {
+        id: "10.1.3", zh: "货物短缺索赔（买方→卖方）", en: "Claim for Missing Goods",
+        sentences: [
+          { zh: "在我们<b>检查</b>商品之后，我们<b>发现</b>每箱少了两张床单。尽管箱数和我们合同中规定的一样。", en: "After we checked the goods, we found that two pieces of bed sheets were missing in each carton, although the number of the cartons is the same as stipulated in our contract." },
+          { zh: "我们已经<b>调查</b>了这一情况并且<b>发现</b>已出具清洁提单。", en: "We have looked into the matter and found that the clean B/L has been issued." },
+          { zh: "我们必须<b>要求</b>你方立即<b>安排</b>装运丢失的货物，因为我们找不到能<b>使</b>客户<b>满意</b>的替代品。", en: "We must ask you to arrange for the shipment of the missing goods at once, because we can't find any replacement to satisfy our clients." },
+          { zh: "否则我方会向你方<b>提起</b>索赔。", en: "Otherwise we will file a claim against you." },
+        ]
+      },
+      {
+        id: "10.1.4", zh: "同意索赔赔偿（卖方→买方）", en: "Agreeing to a Claim",
+        sentences: [
+          { zh: "感谢你方2024年5月10日的来信。我们很<b>遗憾</b>地<b>得知</b>每个箱子里都丢了两张床单。", en: "Thank you for your E-mail of May 10th, 2024. We regret very much to learn that two pieces of bed sheets were missing in each carton." },
+          { zh: "经<b>调查</b>，我们<b>发现</b>这个错误是由于我们的粗心包装造成的。", en: "On going into the matter, we found that the mistake is due to our careless packing." },
+          { zh: "工人没有在箱子里<b>放入</b>正确数量的床单。包装部的主管也没有<b>注意到</b>这个错误。", en: "The workers didn't put the right number of bed sheets into the carton. And the manager of packing department didn't notice this mistake." },
+          { zh: "我们很<b>抱歉</b>给你方带来不便。我方愿意<b>支付</b>发票金额的3%作为补偿，", en: "We are sorry to cause you some inconvenience. We would like to pay 3% of the invoice value to you as a compensation," },
+          { zh: "<b>希望</b>这次事件不会<b>影响</b>我们今后的良好关系。", en: "hoping this matter will not affect our good relations in the future." },
+        ]
+      },
+    ]
+  },
+};
+
+// ── Tokenizer ─────────────────────────────────────────────────────────
+// Split sentence into tokens. Each token: {word, trail, isWord}
+// "garments,"  → word:"garments"  trail:","  isWord:true
+// "2024,"      → word:"2024"      trail:","  isWord:true (has digits)
+// HTML entities like &ldquo; are kept as one unit but flagged non-word
+function tokenize(en) {
+  const tokens = [];
+  // Split preserving spaces; each element is one space-separated token
+  const raw = en.split(' ').filter(t => t.length > 0);
+  for (const tok of raw) {
+    // Strip trailing punctuation into trail
+    const m = tok.match(/^(.*?)([.,!?;:)\]]+)?$/);
+    const word = m[1] || tok;
+    const trail = m[2] || '';
+    const isWord = /[a-zA-Z0-9]/.test(word) && !word.startsWith('&');
+    tokens.push({ orig: tok, word, trail, isWord });
+  }
+  return tokens;
+}
+
+// Count word-tokens
+function wordCount(tokens) {
+  return tokens.filter(t => t.isWord).length;
+}
+
+// Determine how many hints to show based on word count
+function hintCount(wc) {
+  if (wc <= 12) return 2;
+  if (wc <= 24) return 4;
+  return 6;
+}
+
+// Select indices (into tokens array) to show as hints
+// Strategy: always show first word; distribute rest evenly
+function selectHints(tokens, nHints) {
+  const wordIdxs = tokens.map((t,i) => t.isWord ? i : -1).filter(i => i >= 0);
+  const n = wordIdxs.length;
+  if (n <= nHints) return new Set(wordIdxs);
+  const chosen = new Set();
+  chosen.add(wordIdxs[0]); // always first word
+  if (nHints >= 2) {
+    // last word too if nHints allows
+    chosen.add(wordIdxs[n - 1]);
+  }
+  // Fill remaining evenly between first and last
+  let needed = nHints - chosen.size;
+  if (needed > 0) {
+    const step = (n - 1) / (nHints - 1);
+    for (let i = 1; i < nHints - 1; i++) {
+      const pos = Math.round(i * step);
+      chosen.add(wordIdxs[Math.min(pos, n - 1)]);
+      if (chosen.size >= nHints) break;
+    }
+  }
+  // If still need more, fill sequential
+  for (let i = 1; chosen.size < nHints && i < n - 1; i++) {
+    chosen.add(wordIdxs[i]);
+  }
+  return chosen;
+}
+
+// ── State ─────────────────────────────────────────────────────────────
+const state = {
+  name: '',
+  currentProject: null,
+  currentModel: null,
+  attempts: {},
+  sessionScores: {},
+  submitCounts: {}   // { "modelId": number } — 累计提交次数（含重做）
+};
+
+// ── Navigation ────────────────────────────────────────────────────────
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateBreadcrumb() {
+  const bc = document.getElementById('breadcrumb');
+  const parts = [];
+  if (state.currentProject) {
+    parts.push(`<span class="crumb" onclick="showProjectModels('${state.currentProject}')">项目${state.currentProject}</span>`);
+    parts.push('<span class="sep">›</span>');
+  }
+  if (state.currentModel) {
+    parts.push(`<span class="active">${state.currentModel.id}</span>`);
+  }
+  bc.innerHTML = parts.join('');
+}
+
+function renderHome() {
+  const grid = document.getElementById('projectsGrid');
+  grid.innerHTML = '';
+  Object.entries(PROJECTS).forEach(([key, proj]) => {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.onclick = () => startProject(key);
+    const done = proj.models.filter(m => state.sessionScores[m.id] !== undefined).length;
+    card.innerHTML = `
+      <div class="project-count">${done}/${proj.models.length}</div>
+      <div class="project-num">项目 ${key}</div>
+      <div class="project-name">${proj.name.replace(/^项目\S+\s+/, '')}</div>
+      <div class="project-sub">${proj.sub}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+function startProject(pid) {
+  const name = document.getElementById('studentName').value.trim();
+  if (!name) {
+    const el = document.getElementById('studentName');
+    el.focus(); el.style.borderColor = '#e53e3e';
+    setTimeout(() => el.style.borderColor = '', 2000);
+    return;
+  }
+  state.name = name;
+  state.currentProject = pid;
+  showProjectModels(pid);
+}
+
+function showProjectModels(pid) {
+  state.currentProject = pid;
+  const proj = PROJECTS[pid];
+  document.getElementById('modelScreenTitle').textContent = proj.name;
+  document.getElementById('modelScreenSub').textContent = proj.sub + ' — 请选择要练习的课文';
+  const list = document.getElementById('modelsList');
+  list.innerHTML = '';
+  proj.models.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'model-card';
+    card.onclick = () => startExercise(pid, m.id);
+    const sc = state.sessionScores[m.id];
+    const badge = sc !== undefined ? `<span class="model-score-badge">✓ ${Math.round(sc)}分</span>` : '';
+    card.innerHTML = `
+      <span class="model-id">${m.id}</span>
+      <div class="model-title-text">
+        <div class="model-title-zh">${m.zh}</div>
+        <div class="model-title-en">${m.en}</div>
+      </div>
+      ${badge}
+      <span class="model-arrow">›</span>`;
+    list.appendChild(card);
+  });
+  updateBreadcrumb();
+  showScreen('models');
+}
+
+function goHome() {
+  state.currentModel = null;
+  updateBreadcrumb();
+  renderHome();
+  showScreen('home');
+}
+
+// ── Exercise ──────────────────────────────────────────────────────────
+function startExercise(pid, mid) {
+  const proj = PROJECTS[pid];
+  const model = proj.models.find(m => m.id === mid);
+  state.currentProject = pid;
+  state.currentModel = model;
+  state.attempts = {};
+  renderExercise(model);
+  updateBreadcrumb();
+  showScreen('exercise');
+}
+
+function renderExercise(model) {
+  document.getElementById('exTitle').textContent = model.id + '  ' + model.zh;
+  document.getElementById('exMeta').textContent = PROJECTS[state.currentProject].name;
+
+  // Count total blanks
+  let totalBlanks = 0;
+  model.sentences.forEach(s => {
+    const tokens = tokenize(s.en);
+    const wc = wordCount(tokens);
+    const nh = hintCount(wc);
+    const hints = selectHints(tokens, nh);
+    totalBlanks += tokens.filter((t, i) => t.isWord && !hints.has(i)).length;
+  });
+  document.getElementById('exProgress').textContent = `共 ${totalBlanks} 个填空`;
+
+  const content = document.getElementById('exerciseContent');
+  content.innerHTML = '';
+
+  // Rebuild action area
+  const actionArea = document.querySelector('.action-area');
+  actionArea.innerHTML = '<button class="submit-btn" id="submitBtn" onclick="showScore()">✓ 提交，查看得分</button>';
+
+  model.sentences.forEach((sent, sIdx) => {
+    const block = document.createElement('div');
+    block.className = 'sentence-block';
+
+    // Chinese hint
+    const hint = document.createElement('div');
+    hint.className = 'zh-hint';
+    hint.innerHTML = sent.zh;
+    block.appendChild(hint);
+
+    // Tokenize English
+    const tokens = tokenize(sent.en);
+    const wc = wordCount(tokens);
+    const nh = hintCount(wc);
+    const hintSet = selectHints(tokens, nh);
+
+    const enDiv = document.createElement('div');
+    enDiv.className = 'en-text';
+
+    let bIdx = 0;
+    tokens.forEach((tok, tIdx) => {
+      if (!tok.isWord) {
+        // Non-word token (e.g. HTML entity, punctuation-only): show as text
+        enDiv.appendChild(document.createTextNode(tok.orig + ' '));
+        return;
+      }
+
+      if (hintSet.has(tIdx)) {
+        // Show as hint word
+        const span = document.createElement('span');
+        span.className = 'hint-word';
+        span.textContent = tok.word;
+        enDiv.appendChild(span);
+        if (tok.trail) {
+          enDiv.appendChild(document.createTextNode(tok.trail));
+        }
+        enDiv.appendChild(document.createTextNode(' '));
+      } else {
+        // Blank input
+        const id = `${sIdx}-${bIdx}`;
+        const answer = tok.word;
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'blank';
+        input.id = 'b-' + id;
+        input.autocomplete = 'off';
+        input.autocorrect = 'off';
+        input.spellcheck = false;
+        // Width based on answer length
+        input.style.width = Math.max(42, answer.length * 11) + 'px';
+        input.dataset.answer = answer;
+
+        input.addEventListener('blur', () => checkBlank(id, answer));
+        input.addEventListener('keydown', e => {
+          if (e.key === 'Enter') { checkBlank(id, answer); e.preventDefault(); }
+        });
+        input.addEventListener('input', () => {
+          input.classList.remove('wrong');
+          checkAllFilled();
+        });
+
+        enDiv.appendChild(input);
+        if (tok.trail) {
+          const pt = document.createElement('span');
+          pt.className = 'punct';
+          pt.textContent = tok.trail;
+          enDiv.appendChild(pt);
+        }
+        enDiv.appendChild(document.createTextNode(' '));
+        bIdx++;
+      }
+    });
+
+    block.appendChild(enDiv);
+    content.appendChild(block);
+  });
+}
+
+// ── Checking ──────────────────────────────────────────────────────────
+function checkBlank(id, answer) {
+  const input = document.getElementById('b-' + id);
+  if (!input || input.disabled) return;
+  const val = input.value.trim();
+  if (!val) return;
+  if (input.classList.contains('correct')) return;
+
+  if (!state.attempts[id]) state.attempts[id] = 0;
+
+  if (val.toLowerCase() === answer.toLowerCase()) {
+    input.classList.remove('hinted', 'wrong');
+    input.classList.add('correct');
+    input.disabled = true;
+    checkAllFilled();
+  } else {
+    state.attempts[id]++;
+    if (state.attempts[id] >= 3) {
+      input.value = answer;
+      input.disabled = true;
+      input.classList.remove('wrong');
+      input.classList.add('failed');
+      checkAllFilled();
+    } else {
+      input.classList.remove('wrong');
+      void input.offsetWidth;
+      input.classList.add('wrong');
+      if (state.attempts[id] === 2) {
+        const hint = answer.length > 2
+          ? answer[0] + '_'.repeat(answer.length - 2) + answer[answer.length - 1]
+          : answer[0] + '_';
+        input.placeholder = hint;
+      }
+      input.value = '';
+      input.focus();
+    }
+  }
+}
+
+function checkAllFilled() {
+  const blanks = document.querySelectorAll('.blank');
+  const btn = document.getElementById('submitBtn');
+  if (blanks.length === 0 || !btn) return;
+  if (Array.from(blanks).every(b => b.disabled)) btn.classList.add('visible');
+}
+
+// ── Score ─────────────────────────────────────────────────────────────
+// ── Submit score to QuickForm ─────────────────────────────────────────
+async function submitToQuickForm(data) {
+  const ENDPOINT = 'https://quickform.cn/api/32e1mh4epq';
+  try {
+    const res = await fetch(ENDPOINT, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(data)
+    });
+    return res.ok ? 'ok' : 'fail';
+  } catch (e) {
+    return 'error';
+  }
+}
+
+function showScore() {
+  const blanks = document.querySelectorAll('.blank');
+  let total = blanks.length, failed = 0;
+  blanks.forEach(b => { if (b.classList.contains('failed')) failed++; });
+  const score = total === 0 ? 100 : Math.round(((total - failed) / total) * 100);
+  state.sessionScores[state.currentModel.id] = score;
+
+  // Increment submit counter for this model
+  const mid = state.currentModel.id;
+  state.submitCounts[mid] = (state.submitCounts[mid] || 0) + 1;
+  const attempt = state.submitCounts[mid];
+
+  // Timestamp (local time, formatted as YYYY-MM-DD HH:MM:SS)
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const submitted_at = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} `
+                     + `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+
+  const proj      = PROJECTS[state.currentProject];
+  const midx      = proj.models.findIndex(m => m.id === mid);
+  const nextModel = midx < proj.models.length - 1 ? proj.models[midx + 1] : null;
+  const grade     = score >= 90 ? '优秀 🌟' : score >= 75 ? '良好 👍' : score >= 60 ? '及格 📝' : '继续加油 💪';
+
+  const actionArea = document.querySelector('.action-area');
+
+  actionArea.innerHTML = `
+    <div class="score-box">
+      <div class="score-label">${mid} 得分（第 ${attempt} 次提交）</div>
+      <div class="score-num">${score}</div>
+      <div class="score-detail">${grade} &nbsp;|&nbsp; 共 ${total} 空，答错 ${failed} 处</div>
+    </div>
+    <div id="submitStatus" style="
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      font-size:.85rem; color:var(--muted); margin-bottom:14px;">
+      <span id="submitIcon" style="font-size:1rem">⏳</span>
+      <span id="submitMsg">正在提交成绩记录…</span>
+    </div>
+    <p style="color:var(--muted);font-size:.83rem;margin-bottom:16px;">
+      红色单词为系统自动填写（答错3次），不计入得分。
+    </p>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="retryExercise()">↺ 重做</button>
+      <button class="btn btn-primary" onclick="showProjectModels('${state.currentProject}')">← 返回列表</button>
+      ${nextModel
+        ? `<button class="btn btn-success" onclick="startExercise('${state.currentProject}','${nextModel.id}')">下一篇 › (${nextModel.id})</button>`
+        : `<button class="btn btn-accent" onclick="showProjectModels('${state.currentProject}')">✓ 全部完成</button>`}
+    </div>`;
+
+  // Build full payload
+  const payload = {
+    student_name:  state.name,
+    model_id:      mid,
+    score:         score,
+    attempt:       attempt,
+    total_blanks:  total,
+    wrong_count:   failed,
+    submitted_at:  submitted_at
+  };
+
+  // Fire POST in background, update status indicator when done
+  submitToQuickForm(payload).then(result => {
+    const icon = document.getElementById('submitIcon');
+    const msg  = document.getElementById('submitMsg');
+    if (!icon || !msg) return;
+    if (result === 'ok') {
+      icon.textContent = '✅';
+      msg.textContent  = `已记录：${state.name} · ${mid} · ${score}分 · 第${attempt}次 · ${submitted_at}`;
+      msg.style.color  = 'var(--green)';
+    } else {
+      icon.textContent = '⚠️';
+      msg.textContent  = '成绩提交失败，请检查网络连接';
+      msg.style.color  = 'var(--red)';
+    }
+  });
+}
+
+function retryExercise() {
+  state.attempts = {};
+  renderExercise(state.currentModel);
+  window.scrollTo({ top: 0 });
+}
+
+// ── Init ──────────────────────────────────────────────────────────────
+renderHome();
+</script>
+</body>
+</html>
