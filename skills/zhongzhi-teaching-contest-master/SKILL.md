@@ -1,6 +1,6 @@
 ---
 name: zhongzhi-teaching-contest-master
-description: Orchestrate a Chinese secondary vocational teaching competition workflow. Use when the user needs the complete competition package: detailed teaching design, teaching-presentation PPT structure/content, page-aligned speaking script, and mock-judge review. Keep all artifacts logically consistent and evidence-based.
+description: "Orchestrate a Chinese secondary vocational teaching competition workflow. Use when the user needs the complete competition package: detailed teaching design, teaching-presentation PPT structure/content, page-aligned speaking script, and mock-judge review. Keep all artifacts logically consistent and evidence-based."
 ---
 
 # 中职说课比赛总控 Skill

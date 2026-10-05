@@ -1,0 +1,4 @@
+interface:
+  display_name: "中职说课比赛PPT"
+  short_description: "将教学设计转化为面向评委、证据清晰的中职说课PPT"
+  default_prompt: "使用 $zhongzhi-teaching-competition-presentation 将最终教学设计转化为说课比赛PPT。"

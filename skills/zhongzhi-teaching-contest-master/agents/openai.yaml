@@ -1,0 +1,4 @@
+interface:
+  display_name: "中职说课比赛总控"
+  short_description: "统筹中职说课比赛教学设计、说课PPT、逐字稿与模拟评审"
+  default_prompt: "使用 $zhongzhi-teaching-contest-master 基于当前项目材料整理并校准说课比赛三件套。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "中职比赛教学设计"
+  short_description: "生成或校准可实施、可评价、可参赛的中职比赛教学设计"
+  default_prompt: "使用 $zhongzhi-competition-teaching-design 基于当前材料完善中职比赛教学设计。"
